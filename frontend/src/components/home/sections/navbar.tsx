@@ -100,10 +100,10 @@ export function Navbar() {
   const handleOverlayClick = () => setIsDrawerOpen(false);
 
   const logoSrc = !mounted
-    ? '/kortix-logo.svg'
+    ? '/velvet-logo-white.png'
     : resolvedTheme === 'dark'
-      ? '/kortix-logo-white.svg'
-      : '/kortix-logo.svg';
+      ? '/velvet-logo-white.png'
+      : '/velvet-logo-white.png';
 
   return (
     <header
@@ -129,7 +129,7 @@ export function Navbar() {
             <Link href="/" className="flex items-center gap-3">
               <Image
                 src={logoSrc}
-                alt="Kortix Logo"
+                alt="Velvet Logo"
                 width={140}
                 height={22}
                 priority
@@ -151,14 +151,14 @@ export function Navbar() {
                 </Link> */}
                 {user ? (
                   <Link
-                    className="bg-secondary h-8 hidden md:flex items-center justify-center text-sm font-normal tracking-wide rounded-full text-primary-foreground dark:text-secondary-foreground w-fit px-4 shadow-[inset_0_1px_2px_rgba(255,255,255,0.25),0_3px_3px_-1.5px_rgba(16,24,40,0.06),0_1px_1px_rgba(16,24,40,0.08)] border border-white/[0.12]"
+                    className="bg-[var(--velvet-accent)] h-8 hidden md:flex items-center justify-center text-sm font-normal tracking-wide rounded-full text-white w-fit px-4 shadow-md border border-[var(--velvet-border)]"
                     href="/dashboard"
                   >
                     Dashboard
                   </Link>
                 ) : (
                   <Link
-                    className="bg-secondary h-8 hidden md:flex items-center justify-center text-sm font-normal tracking-wide rounded-full text-primary-foreground dark:text-secondary-foreground w-fit px-4 shadow-[inset_0_1px_2px_rgba(255,255,255,0.25),0_3px_3px_-1.5px_rgba(16,24,40,0.06),0_1px_1px_rgba(16,24,40,0.08)] border border-white/[0.12]"
+                    className="bg-[var(--velvet-accent)] h-8 hidden md:flex items-center justify-center text-sm font-normal tracking-wide rounded-full text-white w-fit px-4 shadow-md border border-[var(--velvet-border)]"
                     href="/auth"
                   >
                     Get started
@@ -208,7 +208,7 @@ export function Navbar() {
                   <Link href="/" className="flex items-center gap-3">
                     <Image
                       src={logoSrc}
-                      alt="Kortix Logo"
+                      alt="Velvet Logo"
                       width={120}
                       height={22}
                       priority

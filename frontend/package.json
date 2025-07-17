@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "dev:mock": "node start-frontend-only.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

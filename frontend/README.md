@@ -55,3 +55,16 @@ npm run start
 - Supabase is used for authentication and database operations
 - The app runs on `http://localhost:3000` by default
 - Environment variables are automatically configured by the setup wizard
+
+## Velvet AI UI & Branding Changes
+
+- **Brand Name:** All references to "Suna" and "Kortix AI" have been replaced with "Velvet" and "Velvet AI" throughout the UI.
+- **Logo & Favicon:** The Velvet logo and symbol are now used in the navbar, sidebar, footer, chat, and agent selectors. The favicon is updated to the Velvet symbol.
+- **Color Palette:** A new Velvet color palette (deep purples, Velvet accent, premium shadows) is applied globally via CSS variables.
+- **Component Theming:** All UI components (inputs, selects, dropdowns, tooltips, alerts, badges, buttons, cards, modals, etc.) use Velvet theme variables for backgrounds, borders, and accents.
+- **Navigation:** Navigation links (Home, Use Cases, Open Source, Pricing) are updated and styled for Velvet branding.
+- **Backgrounds:** Animated and static backgrounds on the homepage, auth page, and dashboard are consistent with the Velvet theme.
+- **Special Pages:** Auth, error, billing, and modal dialogs use Velvet theme variables for a cohesive look.
+- **UI Consistency:** Borders, gradients, and backgrounds have been refined for a modern, premium, and consistent Velvet experience.
+
+For details on setting up and using mock data, see [MOCK_README.md](./MOCK_README.md).

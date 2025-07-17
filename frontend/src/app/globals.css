@@ -224,6 +224,40 @@
   }
 }
 
+/* Anthropic/Claude-inspired color variables for Velvet AI */
+:root {
+  --va-background-light: #F7F7F8;
+  --va-background-dark: #18181A;
+  --va-claude-bubble-light: #F3F6FC;
+  --va-claude-bubble-dark: #23272F;
+  --va-user-bubble-light: #E9E9EB;
+  --va-user-bubble-dark: #2C2C2F;
+  --va-primary-accent: #4F46E5;
+  --va-secondary-accent: #6366F1;
+  --va-text-light: #23272F;
+  --va-text-dark: #F3F6FC;
+  --va-border: #E5E7EB;
+  --va-divider: #D1D5DB;
+  --va-placeholder: #A1A1AA;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --va-background: var(--va-background-dark);
+    --va-claude-bubble: var(--va-claude-bubble-dark);
+    --va-user-bubble: var(--va-user-bubble-dark);
+    --va-text: var(--va-text-dark);
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --va-background: var(--va-background-light);
+    --va-claude-bubble: var(--va-claude-bubble-light);
+    --va-user-bubble: var(--va-user-bubble-light);
+    --va-text: var(--va-text-light);
+  }
+}
+
 :root {
   --background: oklch(0.9741 0 129.63);
   --foreground: oklch(0.2277 0.0034 67.65);
@@ -307,7 +341,8 @@
     -moz-osx-font-smoothing: grayscale;
   }
   body {
-    @apply bg-background text-foreground;
+    /* @apply bg-background; */
+    color: var(--velvet-text);
     font-feature-settings: 'palt'; /* Adjusts spacing for CJK text */
   }
 
@@ -653,4 +688,90 @@
       background-position: calc(100% + var(--shiny-width)) 0;
     }
   }
+  }
+
+:root {
+  --velvet-bg: #2a0a2e;
+  --velvet-accent: #a24ac3;
+  --velvet-accent-light: #e0b3ff;
+  --velvet-text: #fff;
+  --velvet-card: #3a1842;
+  --velvet-border: #a24ac3;
+  --velvet-shadow: 0 2px 8px rgba(162, 74, 195, 0.15);
+}
+
+html, body {
+  /* background: linear-gradient(135deg, #2a0a2e 0%, #3a1842 100%); */
+  color: var(--velvet-text);
+  min-height: 100vh;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Sidebar shadow for depth */
+.sidebar-shadow {
+  box-shadow: 4px 0 24px 0 rgba(162, 74, 195, 0.10);
+}
+
+/* Ensure sidebar uses Velvet AI theme */
+[data-slot="sidebar"] {
+  background: var(--velvet-card) !important;
+  border-right: 1px solid var(--velvet-border) !important;
+  color: var(--velvet-text) !important;
+}
+
+/* Override any default sidebar backgrounds */
+.sidebar, [data-sidebar="sidebar"] {
+  background: var(--velvet-card) !important;
+  border-right: 1px solid var(--velvet-border) !important;
+  color: var(--velvet-text) !important;
+}
+
+/* Chat input and card border/glow */
+.velvet-card, .velvet-chat-input {
+  border: 1px solid var(--velvet-border);
+  box-shadow: 0 2px 12px 0 rgba(162, 74, 195, 0.10);
+  background: var(--velvet-card);
+}
+
+/* Sidebar item accent on hover/active */
+.sidebar-item:hover, .sidebar-item.active {
+  background: var(--velvet-accent);
+  color: var(--velvet-text);
+  transition: background 0.2s, color 0.2s;
+}
+
+/* Main heading accent underline */
+.velvet-heading {
+  color: var(--velvet-accent);
+  position: relative;
+}
+.velvet-heading::after {
+  content: '';
+  display: block;
+  margin: 0 auto;
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--velvet-accent), var(--velvet-accent-light));
+  border-radius: 2px;
+  margin-top: 8px;
+}
+
+.animated-gradient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(120deg, #3a1842, #2a0a2e, #4b2060, #1a0820);
+  background-size: 200% 200%;
+  animation: gradientMove 8s ease-in-out infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
   }

@@ -14,7 +14,7 @@ import {
     safeJsonParse,
 } from '@/components/thread/utils';
 import { formatMCPToolDisplayName } from '@/components/thread/tool-views/mcp-tool/_utils';
-import { KortixLogo } from '@/components/sidebar/kortix-logo';
+import { VelvetLogo } from '@/components/sidebar/kortix-logo';
 import { AgentLoader } from './loader';
 import { parseXmlToolCalls, isNewXmlFormat, extractToolNameFromStream } from '@/components/thread/tool-views/xml-parser';
 import { parseToolResult } from '@/components/thread/tool-views/tool-result-parser';
@@ -314,8 +314,8 @@ export const ThreadContent: React.FC<ThreadContentProps> = ({
     project,
     debugMode = false,
     isPreviewMode = false,
-    agentName = 'Suna',
-    agentAvatar = <KortixLogo size={16} />,
+    agentName = 'Velvet AI',
+    agentAvatar = <VelvetLogo size={16} />,
     emptyStateComponent,
 }) => {
     const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -590,7 +590,7 @@ export const ThreadContent: React.FC<ThreadContentProps> = ({
 
                                         return (
                                             <div key={group.key} className="flex justify-end">
-                                                <div className="flex max-w-[85%] rounded-3xl rounded-br-lg bg-card border px-4 py-3 break-words overflow-hidden">
+                                                <div className="flex max-w-[85%] rounded-3xl rounded-br-lg border px-4 py-3 break-words overflow-hidden" style={{ background: 'var(--va-user-bubble)', color: 'var(--va-text)' }}>
                                                     <div className="space-y-3 min-w-0 flex-1">
                                                         {cleanContent && (
                                                             <Markdown className="text-sm prose prose-sm dark:prose-invert chat-markdown max-w-none [&>:first-child]:mt-0 prose-headings:mt-3 break-words overflow-wrap-anywhere">{cleanContent}</Markdown>
@@ -622,7 +622,7 @@ export const ThreadContent: React.FC<ThreadContentProps> = ({
                                                                         </div>
                                                                     );
                                                                 }
-                                                                return <KortixLogo size={16} />;
+                                                                return <VelvetLogo size={16} />;
                                                             })()}
                                                         </div>
                                                         <p className='ml-2 text-sm text-muted-foreground'>
@@ -633,7 +633,7 @@ export const ThreadContent: React.FC<ThreadContentProps> = ({
                                                                 if (firstAssistantWithAgent?.agents?.name) {
                                                                     return firstAssistantWithAgent.agents.name;
                                                                 }
-                                                                return 'Suna';
+                                                                return 'Velvet AI';
                                                             })()}
                                                         </p>
                                                     </div>
@@ -703,7 +703,7 @@ export const ThreadContent: React.FC<ThreadContentProps> = ({
 
                                                                         elements.push(
                                                                             <div key={msgKey} className={assistantMessageCount > 0 ? "mt-4" : ""}>
-                                                                                <div className="prose prose-sm dark:prose-invert chat-markdown max-w-none [&>:first-child]:mt-0 prose-headings:mt-3 break-words overflow-hidden">
+                                                                                <div className="prose prose-sm dark:prose-invert chat-markdown max-w-none [&>:first-child]:mt-0 prose-headings:mt-3 break-words overflow-hidden" style={{ background: 'var(--va-claude-bubble)', color: 'var(--va-text)', borderRadius: '1.5rem', padding: '1rem', marginBottom: '1rem' }}>
                                                                                     {renderedContent}
                                                                                 </div>
                                                                             </div>
@@ -910,7 +910,7 @@ export const ThreadContent: React.FC<ThreadContentProps> = ({
                                                 <div className="rounded-md flex items-center justify-center">
                                                     {agentAvatar}
                                                 </div>
-                                                <p className='ml-2 text-sm text-muted-foreground'>{agentName || 'Suna'}</p>
+                                                <p className='ml-2 text-sm text-muted-foreground'>{agentName || 'Velvet AI'}</p>
                                             </div>
 
                                             {/* Loader content */}
@@ -930,7 +930,7 @@ export const ThreadContent: React.FC<ThreadContentProps> = ({
                                             <div className="rounded-md flex items-center justify-center">
                                                 {agentAvatar}
                                             </div>
-                                            <p className='ml-2 text-sm text-muted-foreground'>{agentName || 'Suna'}</p>
+                                            <p className='ml-2 text-sm text-muted-foreground'>{agentName || 'Velvet AI'}</p>
                                         </div>
 
                                         {/* Tool call content */}
@@ -955,7 +955,7 @@ export const ThreadContent: React.FC<ThreadContentProps> = ({
                                             <div className="rounded-md flex items-center justify-center">
                                                 {agentAvatar}
                                             </div>
-                                            <p className='ml-2 text-sm text-muted-foreground'>{agentName || 'Suna'}</p>
+                                            <p className='ml-2 text-sm text-muted-foreground'>{agentName || 'Velvet AI'}</p>
                                         </div>
 
                                         {/* Streaming indicator content */}

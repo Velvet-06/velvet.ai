@@ -168,6 +168,31 @@ const STAGING_TIERS: SubscriptionTiers = {
   },
 } as const;
 
+// Add mock mode configuration
+export const MOCK_MODE = process.env.NEXT_PUBLIC_MOCK_MODE === 'true' || 
+                         process.env.NEXT_PUBLIC_ENV_MODE === 'MOCK' ||
+                         !process.env.NEXT_PUBLIC_BACKEND_URL;
+
+// Mock environment variables for development
+export const mockEnvVars = {
+  NEXT_PUBLIC_SUPABASE_URL: 'https://mock-supabase-url.supabase.co',
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: 'mock-supabase-anon-key-for-development-only',
+  NEXT_PUBLIC_BACKEND_URL: 'http://localhost:8000',
+  NEXT_PUBLIC_URL: 'http://localhost:3000',
+  NEXT_PUBLIC_ENV_MODE: 'MOCK',
+  NEXT_PUBLIC_GOOGLE_CLIENT_ID: 'mock-google-client-id',
+  NEXT_PUBLIC_SENTRY_DSN: 'https://mock-sentry-dsn@sentry.io/mock',
+  NEXT_PUBLIC_TOLT_REFERRAL_ID: 'mock-tolt-id'
+};
+
+// Helper function to get environment variable with mock fallback
+export const getEnvVar = (key: string): string => {
+  if (MOCK_MODE && mockEnvVars[key as keyof typeof mockEnvVars]) {
+    return mockEnvVars[key as keyof typeof mockEnvVars];
+  }
+  return process.env[key] || '';
+};
+
 // Determine the environment mode from environment variables
 const getEnvironmentMode = (): EnvMode => {
   // Get the environment mode from the environment variable, if set

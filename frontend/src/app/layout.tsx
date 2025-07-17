@@ -1,3 +1,4 @@
+import '@/lib/api-interceptor';
 import { ThemeProvider } from '@/components/home/theme-provider';
 import { siteConfig } from '@/lib/site';
 import type { Metadata, Viewport } from 'next';
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
     template: `%s - ${siteConfig.name}`,
   },
   description:
-    'Suna is a fully open source AI assistant that helps you accomplish real-world tasks with ease. Through natural conversation, Suna becomes your digital companion for research, data analysis, and everyday challenges.',
+    'Velvet AI is a fully open source AI assistant that helps you accomplish real-world tasks with ease. Through natural conversation, Velvet becomes your digital companion for research, data analysis, and everyday challenges.',
   keywords: [
     'AI',
     'artificial intelligence',
@@ -43,13 +44,13 @@ export const metadata: Metadata = {
     'research',
     'data analysis',
   ],
-  authors: [{ name: 'Kortix Team', url: 'https://suna.so' }],
+  authors: [{ name: 'Velvet Team', url: 'https://velvet.so' }],
   creator:
-    'Kortix Team - Adam Cohen Hillel, Marko Kraemer, Domenico Gagliardi, and Quoc Dat Le',
+    'Velvet Team',
   publisher:
-    'Kortix Team - Adam Cohen Hillel, Marko Kraemer, Domenico Gagliardi, and Quoc Dat Le',
+    'Velvet Team',
   category: 'Technology',
-  applicationName: 'Suna',
+  applicationName: 'Velvet AI',
   formatDetection: {
     telephone: false,
     email: false,
@@ -64,36 +65,35 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Suna - Open Source Generalist AI Agent',
+    title: 'Velvet AI - Open Source Generalist AI Assistant',
     description:
-      'Suna is a fully open source AI assistant that helps you accomplish real-world tasks with ease through natural conversation.',
+      'Velvet AI is a fully open source AI assistant that helps you accomplish real-world tasks with ease through natural conversation.',
     url: siteConfig.url,
-    siteName: 'Suna',
+    siteName: 'Velvet AI',
     images: [
       {
         url: '/banner.png',
         width: 1200,
         height: 630,
-        alt: 'Suna - Open Source Generalist AI Agent',
+        alt: 'Velvet AI - Open Source Generalist AI Assistant',
         type: 'image/png',
       },
     ],
     locale: 'en_US',
-    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Suna - Open Source Generalist AI Agent',
+    title: 'Velvet AI - Open Source Generalist AI Assistant',
     description:
-      'Suna is a fully open source AI assistant that helps you accomplish real-world tasks with ease through natural conversation.',
-    creator: '@kortixai',
-    site: '@kortixai',
+      'Velvet AI is a fully open source AI assistant that helps you accomplish real-world tasks with ease through natural conversation.',
+    creator: '@velvetai',
+    site: '@velvetai',
     images: [
       {
         url: '/banner.png',
         width: 1200,
         height: 630,
-        alt: 'Suna - Open Source Generalist AI Agent',
+        alt: 'Velvet AI - Open Source Generalist AI Assistant',
       },
     ],
   },
@@ -101,7 +101,6 @@ export const metadata: Metadata = {
     icon: [{ url: '/favicon.png', sizes: 'any' }],
     shortcut: '/favicon.png',
   },
-  // manifest: "/manifest.json",
   alternates: {
     canonical: siteConfig.url,
   },

@@ -1,7 +1,15 @@
 import { createClient } from '@/lib/supabase/client';
 import { handleApiError, handleNetworkError, ErrorContext, ApiError } from './error-handler';
+import { mockApiClient } from './mock-api';
 
 const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || '';
+
+// Check if we should use mock mode
+const isMockMode = () => {
+  return process.env.NEXT_PUBLIC_MOCK_MODE === 'true' || 
+         process.env.NEXT_PUBLIC_ENV_MODE === 'MOCK' ||
+         !process.env.NEXT_PUBLIC_BACKEND_URL;
+};
 
 export interface ApiClientOptions {
   showErrors?: boolean;
@@ -20,6 +28,11 @@ export const apiClient = {
     url: string,
     options: RequestInit & ApiClientOptions = {}
   ): Promise<ApiResponse<T>> {
+    // Use mock API client if mock mode is enabled
+    if (isMockMode()) {
+      return mockApiClient.request<T>(url, options);
+    }
+
     const {
       showErrors = true,
       errorContext,

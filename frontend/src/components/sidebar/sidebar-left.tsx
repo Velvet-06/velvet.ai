@@ -6,7 +6,7 @@ import { Bot, Menu, Store, Plus, Zap, Plug } from 'lucide-react';
 
 import { NavAgents } from '@/components/sidebar/nav-agents';
 import { NavUserWithTeams } from '@/components/sidebar/nav-user-with-teams';
-import { KortixLogo } from '@/components/sidebar/kortix-logo';
+import { VelvetLogo } from '@/components/sidebar/kortix-logo';
 import { CTACard } from '@/components/sidebar/cta';
 import {
   Sidebar,
@@ -92,13 +92,13 @@ export function SidebarLeft({
   return (
     <Sidebar
       collapsible="icon"
-      className="border-r-0 bg-background/95 backdrop-blur-sm [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
+      className="border-r border-[var(--velvet-border)] bg-[var(--velvet-card)] shadow-[4px_0_32px_0_rgba(162,74,195,0.18)] sidebar-shadow backdrop-blur-sm [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
       {...props}
     >
       <SidebarHeader className="px-2 py-2">
         <div className="flex h-[40px] items-center px-1 relative">
           <Link href="/dashboard">
-            <KortixLogo />
+            <VelvetLogo size={40} />
           </Link>
           {state !== 'collapsed' && (
             <div className="ml-2 transition-all duration-200 ease-in-out whitespace-nowrap">
@@ -129,10 +129,10 @@ export function SidebarLeft({
           </div>
         </div>
       </SidebarHeader>
-      <SidebarContent className="[&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
+      <SidebarContent className="bg-transparent [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
         <SidebarGroup>
           <Link href="/dashboard">
-            <SidebarMenuButton className={cn({
+            <SidebarMenuButton className={cn('sidebar-item', {
               'bg-accent text-accent-foreground font-medium': pathname === '/dashboard',
             })}>
               <Plus className="h-4 w-4 mr-1" />
@@ -155,7 +155,7 @@ export function SidebarLeft({
           )} */}
           {!flagsLoading && customAgentsEnabled && (
             <Link href="/agents">
-              <SidebarMenuButton className={cn({
+              <SidebarMenuButton className={cn('sidebar-item', {
                 'bg-accent text-accent-foreground font-medium': pathname === '/agents',
               })}>
                 <Bot className="h-4 w-4 mr-1" />
@@ -167,7 +167,7 @@ export function SidebarLeft({
           )}
           {!flagsLoading && customAgentsEnabled && (
             <Link href="/settings/credentials">
-              <SidebarMenuButton className={cn({
+              <SidebarMenuButton className={cn('sidebar-item', {
                 'bg-accent text-accent-foreground font-medium': pathname === '/settings/credentials',
               })}>
                 <Plug className="h-4 w-4 mr-1" />

@@ -4,10 +4,10 @@ import Image from 'next/image';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
-interface KortixLogoProps {
+interface VelvetLogoProps {
   size?: number;
 }
-export function KortixLogo({ size = 24 }: KortixLogoProps) {
+export function VelvetLogo({ size = 36 }: VelvetLogoProps) {
   const { theme, systemTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -16,17 +16,14 @@ export function KortixLogo({ size = 24 }: KortixLogoProps) {
     setMounted(true);
   }, []);
 
-  const shouldInvert = mounted && (
-    theme === 'dark' || (theme === 'system' && systemTheme === 'dark')
-  );
-
+  // Remove color inversion for logo
   return (
     <Image
-        src="/kortix-symbol.svg"
-        alt="Kortix"
+        src="/velvet-symbol.png"
+        alt="Velvet"
         width={size}
         height={size}
-        className={`${shouldInvert ? 'invert' : ''} flex-shrink-0`}
+        className="flex-shrink-0"
       />
   );
 }

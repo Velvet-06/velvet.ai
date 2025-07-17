@@ -300,7 +300,9 @@ function LoginContent() {
   }
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen w-full">
+    <main className="flex flex-col items-center justify-center min-h-screen w-full relative overflow-hidden">
+      {/* Velvet card color background only */}
+      <div className="fixed inset-0 bg-[var(--velvet-card)] z-0" />
       <div className="w-full divide-y divide-border">
         {/* Hero-like header with flickering grid */}
         <section className="w-full relative overflow-hidden">
@@ -321,7 +323,7 @@ function LoginContent() {
                   className="h-full w-full"
                   squareSize={mounted && tablet ? 2 : 2.5}
                   gridGap={mounted && tablet ? 2 : 2.5}
-                  color="var(--secondary)"
+                  color="var(--velvet-accent)"
                   maxOpacity={0.4}
                   flickerChance={isScrolling ? 0.01 : 0.03}
                 />
@@ -344,7 +346,7 @@ function LoginContent() {
                   className="h-full w-full"
                   squareSize={mounted && tablet ? 2 : 2.5}
                   gridGap={mounted && tablet ? 2 : 2.5}
-                  color="var(--secondary)"
+                  color="var(--velvet-accent)"
                   maxOpacity={0.4}
                   flickerChance={isScrolling ? 0.01 : 0.03}
                 />
@@ -367,7 +369,7 @@ function LoginContent() {
               </Link>
 
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tighter text-center text-balance text-primary">
-                {isSignUp ? 'Join Suna' : 'Welcome back'}
+                {isSignUp ? 'Join Velvet AI' : 'Welcome back'}
               </h1>
               <p className="text-base md:text-lg text-center text-muted-foreground font-medium text-balance leading-relaxed tracking-tight mt-2 mb-6">
                 {isSignUp
@@ -379,135 +381,128 @@ function LoginContent() {
 
           {/* Auth form card */}
           <div className="relative z-10 flex justify-center px-6 pb-24">
-            <div className="w-full max-w-md rounded-xl bg-[#F3F4F6] dark:bg-[#F9FAFB]/[0.02] border border-border p-8">
-              {/* Non-registration related messages */}
-              {message && !isSuccessMessage && (
-                <div className="mb-6 p-4 rounded-lg flex items-center gap-3 bg-secondary/10 border border-secondary/20 text-secondary">
-                  <AlertCircle className="h-5 w-5 flex-shrink-0 text-secondary" />
-                  <span className="text-sm font-medium">{message}</span>
+            <div className="w-full max-w-md rounded-2xl bg-[rgba(40,0,60,0.85)] border border-[rgba(120,80,200,0.25)] shadow-[0_8px_32px_0_rgba(80,0,120,0.25)] p-8 backdrop-blur-md ring-1 ring-[rgba(120,80,200,0.15)] relative overflow-hidden">
+              {/* Velvet glow effect */}
+              <div className="absolute -inset-2 rounded-3xl pointer-events-none z-0" style={{boxShadow:'0 0 40px 8px rgba(120,80,200,0.25)'}} />
+              <div className="relative z-10">
+                {/* Non-registration related messages */}
+                {message && !isSuccessMessage && (
+                  <div className="mb-6 p-4 rounded-lg flex items-center gap-3 bg-secondary/10 border border-secondary/20 text-secondary">
+                    <AlertCircle className="h-5 w-5 flex-shrink-0 text-secondary" />
+                    <span className="text-sm font-medium">{message}</span>
+                  </div>
+                )}
+                {/* OAuth Sign In */}
+                <div className="w-full flex flex-col gap-3 mb-6">
+                  <div className="w-full">
+                    <GoogleSignIn returnUrl={returnUrl || undefined} />
+                  </div>
+                  <div className="w-full">
+                    <GitHubSignIn returnUrl={returnUrl || undefined} />
+                  </div>
                 </div>
-              )}
-
-              {/* OAuth Sign In */}
-              <div className="w-full flex flex-col gap-3 mb-6">
-                <div className="w-full">
-                  <GoogleSignIn returnUrl={returnUrl || undefined} />
+                {/* Divider */}
+                <div className="relative my-8">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-border"></div>
+                  </div>
+                  <div className="relative flex justify-center text-sm">
+                    <span className="px-2 bg-[#F3F4F6] dark:bg-[#F9FAFB]/[0.02] text-muted-foreground">
+                      or continue with email
+                    </span>
+                  </div>
                 </div>
-                <div className="w-full">
-                  <GitHubSignIn returnUrl={returnUrl || undefined} />
-                </div>
-              </div>
-
-
-              {/* Divider */}
-              <div className="relative my-8">
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-border"></div>
-                </div>
-                <div className="relative flex justify-center text-sm">
-                  <span className="px-2 bg-[#F3F4F6] dark:bg-[#F9FAFB]/[0.02] text-muted-foreground">
-                    or continue with email
-                  </span>
-                </div>
-              </div>
-
-              {/* Form */}
-              <form className="space-y-4">
-                <div>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="Email address"
-                    className="h-12 rounded-full bg-background border-border"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <Input
-                    id="password"
-                    name="password"
-                    type="password"
-                    placeholder="Password"
-                    className="h-12 rounded-full bg-background border-border"
-                    required
-                  />
-                </div>
-
-                {isSignUp && (
+                {/* Form */}
+                <form className="space-y-4">
                   <div>
                     <Input
-                      id="confirmPassword"
-                      name="confirmPassword"
-                      type="password"
-                      placeholder="Confirm password"
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="Email address"
                       className="h-12 rounded-full bg-background border-border"
                       required
                     />
                   </div>
-                )}
-
-                <div className="space-y-4 pt-4">
-                  {!isSignUp ? (
-                    <>
-                      <SubmitButton
-                        formAction={handleSignIn}
-                        className="w-full h-12 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all shadow-md"
-                        pendingText="Signing in..."
-                      >
-                        Sign in
-                      </SubmitButton>
-
-                      <Link
-                        href={`/auth?mode=signup${returnUrl ? `&returnUrl=${returnUrl}` : ''}`}
-                        className="flex h-12 items-center justify-center w-full text-center rounded-full border border-border bg-background hover:bg-accent/20 transition-all"
-                      >
-                        Create new account
-                      </Link>
-                    </>
-                  ) : (
-                    <>
-                      <SubmitButton
-                        formAction={handleSignUp}
-                        className="w-full h-12 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all shadow-md"
-                        pendingText="Creating account..."
-                      >
-                        Sign up
-                      </SubmitButton>
-
-                      <Link
-                        href={`/auth${returnUrl ? `?returnUrl=${returnUrl}` : ''}`}
-                        className="flex h-12 items-center justify-center w-full text-center rounded-full border border-border bg-background hover:bg-accent/20 transition-all"
-                      >
-                        Back to sign in
-                      </Link>
-                    </>
-                  )}
-                </div>
-
-                {!isSignUp && (
-                  <div className="text-center pt-2">
-                    <button
-                      type="button"
-                      onClick={() => setForgotPasswordOpen(true)}
-                      className="text-sm text-primary hover:underline"
-                    >
-                      Forgot password?
-                    </button>
+                  <div>
+                    <Input
+                      id="password"
+                      name="password"
+                      type="password"
+                      placeholder="Password"
+                      className="h-12 rounded-full bg-background border-border"
+                      required
+                    />
                   </div>
-                )}
-              </form>
-
-              <div className="mt-8 text-center text-xs text-muted-foreground">
-                By continuing, you agree to our{' '}
-                <Link href="/terms" className="text-primary hover:underline">
-                  Terms of Service
-                </Link>{' '}
-                and{' '}
-                <Link href="/privacy" className="text-primary hover:underline">
-                  Privacy Policy
-                </Link>
+                  {isSignUp && (
+                    <div>
+                      <Input
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        type="password"
+                        placeholder="Confirm password"
+                        className="h-12 rounded-full bg-background border-border"
+                        required
+                      />
+                    </div>
+                  )}
+                  <div className="space-y-4 pt-4">
+                    {!isSignUp ? (
+                      <>
+                        <SubmitButton
+                          formAction={handleSignIn}
+                          className="w-full h-12 rounded-full bg-[var(--velvet-accent,#a259ff)] text-white hover:bg-[var(--velvet-accent-dark,#7c2ae8)] transition-all shadow-md font-semibold text-lg tracking-tight"
+                          pendingText="Signing in..."
+                        >
+                          Sign in
+                        </SubmitButton>
+                        <Link
+                          href={`/auth?mode=signup${returnUrl ? `&returnUrl=${returnUrl}` : ''}`}
+                          className="flex h-12 items-center justify-center w-full text-center rounded-full border border-[rgba(120,80,200,0.25)] bg-background hover:bg-[rgba(120,80,200,0.08)] transition-all font-semibold text-lg tracking-tight"
+                        >
+                          Create new account
+                        </Link>
+                      </>
+                    ) : (
+                      <>
+                        <SubmitButton
+                          formAction={handleSignUp}
+                          className="w-full h-12 rounded-full bg-[var(--velvet-accent,#a259ff)] text-white hover:bg-[var(--velvet-accent-dark,#7c2ae8)] transition-all shadow-md font-semibold text-lg tracking-tight"
+                          pendingText="Creating account..."
+                        >
+                          Sign up
+                        </SubmitButton>
+                        <Link
+                          href={`/auth${returnUrl ? `?returnUrl=${returnUrl}` : ''}`}
+                          className="flex h-12 items-center justify-center w-full text-center rounded-full border border-[rgba(120,80,200,0.25)] bg-background hover:bg-[rgba(120,80,200,0.08)] transition-all font-semibold text-lg tracking-tight"
+                        >
+                          Back to sign in
+                        </Link>
+                      </>
+                    )}
+                  </div>
+                  {!isSignUp && (
+                    <div className="text-center pt-2">
+                      <button
+                        type="button"
+                        onClick={() => setForgotPasswordOpen(true)}
+                        className="text-sm text-primary hover:underline"
+                      >
+                        Forgot password?
+                      </button>
+                    </div>
+                  )}
+                </form>
+                <div className="mt-8 text-center text-xs text-muted-foreground">
+                  By continuing, you agree to our{' '}
+                  <Link href="/terms" className="text-primary hover:underline">
+                    Terms of Service
+                  </Link>{' '}
+                  and{' '}
+                  <Link href="/privacy" className="text-primary hover:underline">
+                    Privacy Policy
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -516,7 +511,7 @@ function LoginContent() {
 
       {/* Forgot Password Dialog */}
       <Dialog open={forgotPasswordOpen} onOpenChange={setForgotPasswordOpen}>
-        <DialogContent className="sm:max-w-md rounded-xl bg-[#F3F4F6] dark:bg-[#17171A] border border-border [&>button]:hidden">
+        <DialogContent className="sm:max-w-md rounded-xl bg-[var(--velvet-card)] border-[var(--velvet-border)] shadow-[var(--velvet-shadow)] text-white [&>button]:hidden">
           <DialogHeader>
             <div className="flex items-center justify-between">
               <DialogTitle className="text-xl font-medium">
@@ -536,6 +531,10 @@ function LoginContent() {
           </DialogHeader>
 
           <form onSubmit={handleForgotPassword} className="space-y-4 py-4">
+            {/* Continue with Google button */}
+            <div className="w-full mb-4">
+              <GoogleSignIn returnUrl={returnUrl || undefined} />
+            </div>
             <Input
               id="forgot-password-email"
               type="email"

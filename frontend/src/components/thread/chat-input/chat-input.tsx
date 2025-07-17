@@ -297,7 +297,7 @@ export const ChatInput = forwardRef<ChatInputHandles, ChatInputProps>(
           isVisible={showToolPreview}
         />
         <Card
-          className={`-mb-2 shadow-none w-full max-w-4xl mx-auto bg-transparent border-none overflow-hidden ${enableAdvancedConfig && selectedAgentId ? '' : 'rounded-3xl'}`}
+          className={`-mb-2 shadow-none w-full max-w-4xl mx-auto bg-transparent border-none overflow-hidden velvet-chat-input velvet-card ${enableAdvancedConfig && selectedAgentId ? '' : 'rounded-3xl'}`}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={(e) => {
@@ -319,7 +319,7 @@ export const ChatInput = forwardRef<ChatInputHandles, ChatInputProps>(
           }}
         >
           <div className="w-full text-sm flex flex-col justify-between items-start rounded-lg">
-            <CardContent className={`w-full p-1.5 ${enableAdvancedConfig && selectedAgentId ? 'pb-1' : 'pb-2'} ${bgColor} border ${enableAdvancedConfig && selectedAgentId ? 'rounded-t-3xl' : 'rounded-3xl'}`}>
+            <CardContent className={`w-full p-1.5 ${enableAdvancedConfig && selectedAgentId ? 'pb-1' : 'pb-2'} ${bgColor} border ${enableAdvancedConfig && selectedAgentId ? 'rounded-t-3xl' : 'rounded-3xl'} velvet-chat-input velvet-card`}>
               <AttachmentGroup
                 files={uploadedFiles || []}
                 sandboxId={sandboxId}

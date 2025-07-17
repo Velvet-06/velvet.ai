@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/client';
 import { handleApiError } from './error-handler';
+import { getMockMode } from './api-interceptor';
 
 // Get backend URL from environment variables
 const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || '';
@@ -1569,15 +1570,17 @@ export const initiateAgent = async (
 };
 
 export const checkApiHealth = async (): Promise<HealthCheckResponse> => {
+  if (getMockMode && getMockMode()) {
+    // Return mock data directly in mock mode
+    return { status: 'ok', timestamp: new Date().toISOString(), instance_id: 'mock-instance' };
+  }
   try {
     const response = await fetch(`${API_URL}/health`, {
       cache: 'no-store',
     });
-
     if (!response.ok) {
       throw new Error(`API health check failed: ${response.statusText}`);
     }
-
     return response.json();
   } catch (error) {
     throw error;

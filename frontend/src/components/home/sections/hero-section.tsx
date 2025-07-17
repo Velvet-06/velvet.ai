@@ -298,12 +298,11 @@ export function HeroSection() {
             </span>
           </Link> */}
           <div className="flex flex-col items-center justify-center gap-5 pt-16">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tighter text-balance text-center">
-              <span className="text-secondary">Suna</span>
-              <span className="text-primary">, your AI Employee.</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter text-balance text-center text-[var(--velvet-accent)]">
+              Velvet AI
             </h1>
-            <p className="text-base md:text-lg text-center text-muted-foreground font-medium text-balance leading-relaxed tracking-tight">
-              {hero.description}
+            <p className="text-lg md:text-xl text-center text-muted-foreground font-medium text-balance leading-relaxed tracking-tight">
+              Your intelligent assistant for work and creativity.
             </p>
           </div>
 
